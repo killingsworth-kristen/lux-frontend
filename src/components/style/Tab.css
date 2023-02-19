@@ -1,0 +1,21 @@
+.fake-tab {
+    display: inline-flex;
+    flex: 1 1 0;
+    justify-content: center;
+    border: solid 1px var(--blue);
+    padding: .5rem 0;
+}
+
+.tab-text {
+    padding-left: .5rem;
+}
+
+.tab-close {
+    padding: 0 .5rem;
+    border: none;
+}
+
+.tab-close:hover {
+    background-color: var(--lighter-gray);
+    color: var(--blue);
+}

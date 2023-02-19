@@ -1,0 +1,40 @@
+.data-set {
+    border: 1px solid var(--blue);
+    width: fit-content;
+}
+
+.data-set-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.data-set-delete {
+    color: var(--blue);
+    padding: 0 .5rem;
+    border: none;
+}
+
+.data-set-delete:hover {
+    background-color: var(--lighter-gray);
+    color: black;
+}
+
+/* data set selections (might get moved to new component */
+.data-set-li {
+    display: inline-flex;
+}
+
+.data-set-text {
+    padding-left: .5rem;
+}
+
+.data-set-close {
+    color: var(--blue);
+    padding: 0 .5rem;
+    border: none;
+}
+
+.data-set-close:hover {
+    background-color: var(--lighter-gray);
+    color: black;
+}

@@ -1,0 +1,29 @@
+.header-container {
+    display: flex;
+    justify-content: start;
+}
+
+.title {
+    font-size: 8vh;
+    padding-right: 6vh;
+    margin: 0 0 0 2vw;
+}
+
+.nav-container {
+    display: flex;
+}
+
+.nav-tab {
+    margin: auto 0;
+    padding: 1vw;
+    color: var(--blue);
+}
+
+.nav-tab:hover {
+    /* background: radial-gradient(circle, var(--lighter-gray) 0%, var(--dark-gray) 80%); */
+    background-color: var(--lighter-gray);
+}
+
+.fake-tabs-container {
+    display: flex;
+}
