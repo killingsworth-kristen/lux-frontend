@@ -18,14 +18,45 @@
 
 .data-selector-source-list-container {
     display: flex;
+    height: 70vh;
 }
 
 .display-num-items-form {
     width: 100%;
 }
 
-#source-1-list {
+.list-item-div {
+    display: flex;
+    max-width: 50%;
+    margin: .1rem 1rem;
+}
+
+.list-item {
+    flex-grow: 1;
+}
+
+#source-1-ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
     list-style: none;
+}
+
+/* page select */
+.page-select-div {
+    display: flex;
+    justify-content: center;
+}
+
+.page-select {
+    padding: 0 .5rem;
+    cursor: pointer;
+}
+
+.pagination-btn {
+    cursor: pointer;
 }
 
 

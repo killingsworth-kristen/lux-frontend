@@ -8,7 +8,7 @@ import DataSetSelector from '../DataSetSelector';
 export default function Home () {
     return (
         <div className='home-container'>
-        <section>
+        <section className='data-sets'>
             <form>
                 <label>
                     Name your Collection:
@@ -30,7 +30,7 @@ export default function Home () {
             <DataSet/>
             <DataSet/>
         </section>
-        <section>
+        <section className='data-set-selector'>
             <DataSetSelector/>
         </section>
         </div>

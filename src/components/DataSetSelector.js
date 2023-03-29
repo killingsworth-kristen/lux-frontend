@@ -3,32 +3,37 @@ import './style/DataSetSelector.css'
 
 
 export default function DataSetSelector () {
-    const [displayItems, setDisplayItems] = useState('10 items')
-    const [source, setSource] = useState(`1`)
+    // state declarations
+    const [displayItems, setDisplayItems] = useState('25 items')
+    const [source, setSource] = useState(1)
+    const [currentPage, setCurrentPage] = useState(1)
+
+    // global variables
     const options = [
         {
             key: 1,
-            label: '10 items',
-            value: '10 items'
-        },
-        {
-            key: 2,
-            label: '15 items',
-            value: '15 items'
-        },
-        {
-            key: 3,
-            label: '20 items',
-            value: '20 items'
-        },
-        {
-            key: 4,
             label: '25 items',
             value: '25 items'
         },
+        {
+            key: 2,
+            label: '50 items',
+            value: '50 items'
+        },
+        {
+            key: 3,
+            label: '75 items',
+            value: '75 items'
+        },
+        {
+            key: 4,
+            label: '100 items',
+            value: '100 items'
+        },
     ]
-
     const listArr = []
+
+    // functions
     const makeListArr = () => {
         const displayNum = displayItems.split(' ')[0]
         for (let i = 0; i < displayNum; i++) {
@@ -44,17 +49,42 @@ export default function DataSetSelector () {
     const handleSourceChange = (e) => {
         const sourceNum = e.target.textContent.split(' ')[1]
         console.log(sourceNum)
-        setSource(sourceNum)
+        setSource(parseInt(sourceNum))
         console.log('source changed')
+    }
+    
+    const handlePageBack = () => {
+        let newPage = currentPage - 1
+        if (newPage === 0) {
+            newPage = 5
+            setCurrentPage(newPage)
+            return;
+        }
+        setCurrentPage(newPage)
+    }
+
+    const handlePageForawrd = () => {
+        let newPage = currentPage + 1
+        if (newPage === 6) {
+            newPage = 1
+            setCurrentPage(newPage)
+            return;
+        }
+        setCurrentPage(newPage)
+    }
+
+    const handleSpecificPageSelect = (e) => {
+        const newPage = e.target.textContent
+        setCurrentPage(parseInt(newPage))
     }
 
     return (
         <div className="data-set-selector-container">
             <h2 className='data-set-selector-title'>Select Data to Graph:</h2>
             <div className='data-selector-source-tabs-container'>
-                <h3 className={source === `1` ? 'selected data-selector-source-tabs' : 'data-selector-source-tabs'} id='source-tab-1' onClick={handleSourceChange}>Source 1</h3>
-                <h3 className={source === `2` ? 'selected data-selector-source-tabs' : 'data-selector-source-tabs'} id='source-tab-2' onClick={handleSourceChange}>Source 2</h3>
-                <h3 className={source === `3` ? 'selected data-selector-source-tabs' : 'data-selector-source-tabs'} id='source-tab-3' onClick={handleSourceChange}>Source 3</h3>
+                <h3 className={source === 1 ? 'selected data-selector-source-tabs' : 'data-selector-source-tabs'} id='source-tab-1' onClick={handleSourceChange}>Source 1</h3>
+                <h3 className={source === 2 ? 'selected data-selector-source-tabs' : 'data-selector-source-tabs'} id='source-tab-2' onClick={handleSourceChange}>Source 2</h3>
+                <h3 className={source === 3 ? 'selected data-selector-source-tabs' : 'data-selector-source-tabs'} id='source-tab-3' onClick={handleSourceChange}>Source 3</h3>
             </div>
             <form className='display-num-items-form'>
                 <label htmlFor='display-num-items'>Display Number of Items: </label>
@@ -65,11 +95,25 @@ export default function DataSetSelector () {
                 </select>
             </form>
             <div className='data-selector-source-list-container'>
-                <ul id='source-1-list'>
+                <ul id='source-1-ul'>
                     {makeListArr()}
-                    {listArr.map((li)=><li key={li.key}>{li.element}</li>)}
+                    {listArr.map((li)=>
+                        <div key={`${li.key}-div`} className='list-item-div' >
+                            <li key={li.key} className='list-item'>{li.element}</li>
+                            <button className='list-item-button'>Add</button>
+                        </div>
+                    )}
                 </ul>
             </div>
+            <div className='page-select-div'>
+                        <button className='back-page-btn pagination-btn' onClick={handlePageBack}>&lt;</button>
+                        <p className={currentPage === 1 ? 'selected page-select' : 'page-select'} onClick={handleSpecificPageSelect}>1</p>
+                        <p className={currentPage === 2 ? 'selected page-select' : 'page-select'} onClick={handleSpecificPageSelect}>2</p>
+                        <p className={currentPage === 3 ? 'selected page-select' : 'page-select'} onClick={handleSpecificPageSelect}>3</p>
+                        <p className={currentPage === 4 ? 'selected page-select' : 'page-select'} onClick={handleSpecificPageSelect}>4</p>
+                        <p className={currentPage === 5 ? 'selected page-select' : 'page-select'} onClick={handleSpecificPageSelect}>5</p>
+                        <button className='forward-page-btn pagination-btn' onClick={handlePageForawrd}>&gt;</button>
+                </div>
         </div>
     )
 }
