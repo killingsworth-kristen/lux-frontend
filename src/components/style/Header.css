@@ -17,6 +17,7 @@
     margin: auto 0;
     padding: 1vw;
     color: var(--blue);
+    cursor: pointer;
 }
 
 .nav-tab:hover {
