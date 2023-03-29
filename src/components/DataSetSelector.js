@@ -2,14 +2,15 @@ import React, {useState} from 'react'
 import './style/DataSetSelector.css'
 
 
-export default function DataSetSelector () {
+export default function DataSetSelector (dataSetArr) {
     // state declarations
     const [displayItems, setDisplayItems] = useState('25 items')
     const [source, setSource] = useState(1)
     const [currentPage, setCurrentPage] = useState(1)
+    const [dataSetOption, setDataSetOption] = useState(1)
 
     // global variables
-    const options = [
+    const displayOptions = [
         {
             key: 1,
             label: '25 items',
@@ -31,13 +32,36 @@ export default function DataSetSelector () {
             value: '100 items'
         },
     ]
+    let dataSetOptions = []
+    for (let i=0; i<dataSetArr.dataSetArr.length; i++) {
+        dataSetOptions.push(
+            {
+                key: `dataSetOption${dataSetArr.dataSetArr[i].dataSetCount}`,
+                label: dataSetArr.dataSetArr[i].dataSetCount,
+                value: dataSetArr.dataSetArr[i].dataSetCount,
+            }
+        )
+    }
+
     const listArr = []
 
+
     // functions
+
+    // source change function
+    const handleSourceChange = (e) => {
+        const sourceNum = e.target.textContent.split(' ')[1]
+        console.log(sourceNum)
+        setSource(parseInt(sourceNum))
+        console.log('source changed')
+    }
+
+    // display number of items functions
     const makeListArr = () => {
+        console.log(`makeListArr called`)
         const displayNum = displayItems.split(' ')[0]
         for (let i = 0; i < displayNum; i++) {
-            listArr.push({key: `${source}-${i}`, element: `Source ${source} - list item ${i+1}`})
+                listArr.push({key: `${source}-${i}`, element: `Source ${source} - list item ${(currentPage*parseInt(displayNum)-parseInt(displayNum))+1+i}`})
         }
     }
 
@@ -46,13 +70,16 @@ export default function DataSetSelector () {
         setDisplayItems(e.target.value)
     }
 
-    const handleSourceChange = (e) => {
-        const sourceNum = e.target.textContent.split(' ')[1]
-        console.log(sourceNum)
-        setSource(parseInt(sourceNum))
-        console.log('source changed')
+    // add data selector to data set
+    const handleDataSetSelection = (e) => {
+        setDataSetOption(e.target.value)
     }
-    
+
+    const handleAddSelector = () => {
+
+    }
+
+    // pagination functions
     const handlePageBack = () => {
         let newPage = currentPage - 1
         if (newPage === 0) {
@@ -89,7 +116,7 @@ export default function DataSetSelector () {
             <form className='display-num-items-form'>
                 <label htmlFor='display-num-items'>Display Number of Items: </label>
                 <select name='display-num-items' onChange={handleDisplayItems} value={displayItems}>
-                    {options.map((option)=>
+                    {displayOptions.map((option)=>
                         <option key={option.key} value={option.value}>{option.label}</option>
                     )}
                 </select>
@@ -100,7 +127,15 @@ export default function DataSetSelector () {
                     {listArr.map((li)=>
                         <div key={`${li.key}-div`} className='list-item-div' >
                             <li key={li.key} className='list-item'>{li.element}</li>
-                            <button className='list-item-button'>Add</button>
+                            <button className='list-item-button' onClick={handleAddSelector}>Add</button>
+                            <form className='add-to-data-set-selection-form'>
+                                <label htmlFor='add-to-data-set-selection'> to </label>
+                                <select name='add-to-data-set-selection' onChange={handleDataSetSelection}>
+                                    {dataSetOptions.map((option)=>
+                                        <option key={option.key} value={option.value}>{option.label}</option>
+                                    )}
+                                </select>
+                            </form>
                         </div>
                     )}
                 </ul>

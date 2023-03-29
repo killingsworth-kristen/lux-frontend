@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './../style/Home.css';
 
 // import components
@@ -6,6 +6,26 @@ import DataSet from './../DataSet'
 import DataSetSelector from '../DataSetSelector';
 
 export default function Home () {
+    // state declarations
+    const [dataSetCount, setDataSetCount] = useState(1)
+
+    // global variables
+    const dataSetArr = []
+
+    // functions
+
+    const handleAddDataSet = () => {
+        let newDataSetCount = dataSetCount + 1;
+        setDataSetCount(newDataSetCount)
+    }
+
+    const dataSetRender = () => {
+        for (let i = 0; i < dataSetCount; i++) {
+            dataSetArr.push({key: `dataset${i+1}`, dataSetCount: i+1})
+        }
+        console.log(dataSetArr)
+    }
+
     return (
         <div className='home-container'>
         <section className='data-sets'>
@@ -16,7 +36,7 @@ export default function Home () {
                     <button>Render Graph(s)</button>
                 </label>
             </form>
-            <button>Add Graph/Data Set</button>
+            <button onClick={handleAddDataSet}>Add Graph/Data Set</button>
             <form className='data-set-params-form'>
                 {/* what unit of time is going to be used? */}
                 <input type='text' name='start-time' id='start-time-input' placeholder='Time Start' maxLength="10"/>
@@ -27,11 +47,18 @@ export default function Home () {
                 <label htmlFor='delta-time'> | </label>
                 <input type='text' name='delta' id='delta-time' placeholder='Delta'/>
             </form>
-            <DataSet/>
-            <DataSet/>
+            {dataSetRender()}
+            {dataSetArr.map((dataSet)=>
+                <DataSet 
+                    key={dataSet.key}
+                    dataSetCount={dataSet.dataSetCount}
+                />
+            )}
         </section>
         <section className='data-set-selector'>
-            <DataSetSelector/>
+            <DataSetSelector
+                dataSetArr={dataSetArr}
+            />
         </section>
         </div>
     )

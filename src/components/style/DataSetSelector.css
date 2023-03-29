@@ -31,8 +31,24 @@
     margin: .1rem 1rem;
 }
 
+.list-item-div:hover {
+    background-color: var(--lighter-gray);
+}
+
 .list-item {
     flex-grow: 1;
+}
+
+.list-item-button {
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    padding: .2rem;
+}
+
+.list-item-button:hover {
+    background-color: white;
+    color: var(--blue);
 }
 
 #source-1-ul {
@@ -44,10 +60,15 @@
     list-style: none;
 }
 
+.add-to-data-set-selection-form {
+    margin-left: .5rem;
+}
+
 /* page select */
 .page-select-div {
     display: flex;
     justify-content: center;
+    margin: .5rem;
 }
 
 .page-select {
