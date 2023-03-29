@@ -13,21 +13,30 @@ export default function DataSet () {
             </div>
             <div className='data-set-selections'>
                 <ul className='data-set-ul'>
-                    <li>
-                        <div className='data-set-li'>
-                            <p className='data-set-text'>◉ This is a selection</p>
+                    <li className='data-set-li'>
+                        <div className='data-set-li-item'>
+                            <div className='data-set-text-container'>
+                                <p className='custom-li-marker'>◉ </p>
+                                <p className='data-set-text'>This is a selection</p>
+                            </div>
                             <button className='data-set-close'>X</button>
                         </div>
                     </li>
-                    <li>
-                        <div className='data-set-li'>
-                            <p className='data-set-text'>◉ This is a selection</p>
+                    <li className='data-set-li'>
+                        <div className='data-set-li-item'>
+                            <div className='data-set-text-container'>
+                                <p className='custom-li-marker'>◉ </p>
+                                <p className='data-set-text'>Ad esse anim in excepteur laboris est fugiat nulla incididunt Lorem nostrud fugiat officia. Anim duis veniam irure consequat.</p>
+                            </div>
                             <button className='data-set-close'>X</button>
                         </div>
                     </li>
-                    <li>
-                        <div className='data-set-li'>
-                            <p className='data-set-text'>◉ This is a selection</p>
+                    <li className='data-set-li'>
+                        <div className='data-set-li-item'>
+                            <div className='data-set-text-container'>
+                                <p className='custom-li-marker'>◉ </p>
+                                <p className='data-set-text'>This is a selection</p>
+                            </div>
                             <button className='data-set-close'>X</button>
                         </div>
                     </li>

@@ -1,0 +1,25 @@
+.home-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1vw;
+}
+
+/* time params form */
+.data-set-params-foprm {
+    display: flex;
+    flex-direction: column;
+}
+
+#start-time-input {
+    max-width: 6em;
+}
+
+#end-time-input {
+    max-width: 6em;
+}
+
+#delta-time {
+    max-width: 6em;
+}
+
+

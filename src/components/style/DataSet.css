@@ -1,6 +1,7 @@
 .data-set {
     border: 1px solid var(--blue);
     width: fit-content;
+    margin: 1vw;
 }
 
 .data-set-title {
@@ -9,6 +10,7 @@
 }
 
 .data-set-delete {
+    background-color: inherit;
     color: var(--blue);
     padding: 0 .5rem;
     border: none;
@@ -16,22 +18,47 @@
 
 .data-set-delete:hover {
     background-color: var(--lighter-gray);
-    color: black;
+    color: red;
 }
 
 /* data set selections (might get moved to new component */
+.data-set-ul {
+    list-style: none;
+}
+
 .data-set-li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.data-set-li-item {
     display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    background-color: inherit;
+}
+
+.data-set-text-container {
+    display: flex;
+    background-color: inherit;
 }
 
 .data-set-text {
     padding-left: .5rem;
+    background-color: inherit;
 }
 
 .data-set-close {
+    background-color: inherit;
     color: var(--blue);
     padding: 0 .5rem;
     border: none;
+}
+
+/* delte hover for individual items */
+.data-set-li:hover {
+    background-color: var(--lighter-gray);
 }
 
 .data-set-close:hover {

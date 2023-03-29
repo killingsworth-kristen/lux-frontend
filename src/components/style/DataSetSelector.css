@@ -1,0 +1,40 @@
+.data-set-selector-container {
+    width: 75vw;
+    border: 1px solid var(--blue);
+    margin-left: 1vw;
+}
+
+.data-selector-source-tabs-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.data-selector-source-tabs {
+    display: flex;
+    border: 1px solid var(--blue);
+    width: 100%;
+    justify-content: center;
+}
+
+.data-selector-source-list-container {
+    display: flex;
+}
+
+.display-num-items-form {
+    width: 100%;
+}
+
+#source-1-list {
+    list-style: none;
+}
+
+
+/* conditional utils */
+.selected {
+    background-color: var(--blue)
+    /* background-color: salmon; */
+}
+
+.hidden {
+    display: none;
+}
